@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>First on Paul Hook</title>
+    <link>/categories/first/</link>
+    <description>Recent content in First on Paul Hook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/first/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My first blog post!</title>
+      <link>/blog/2018/02/20/2018-02-20-my-first-blog-post/</link>
+      <pubDate>Tue, 20 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/02/20/2018-02-20-my-first-blog-post/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
