@@ -6,19 +6,10 @@
     <description>Recent content in Blogs on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>testing</title>
-      <link>/blog/2018/02/23/2018-02-23-testing/</link>
-      <pubDate>Fri, 23 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2018/02/23/2018-02-23-testing/</guid>
-      <description>test to see if publishdate will work</description>
-    </item>
     
     <item>
       <title>My first blog post!</title>
