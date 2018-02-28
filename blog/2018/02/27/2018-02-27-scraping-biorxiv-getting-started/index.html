@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>General</title>
+  <title>Scraping bioRxiv</title>
   <meta name="author" content="" />
 
   
@@ -56,9 +56,9 @@
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Paul Hook">
 
   
-  <meta property="og:title" content="General" />
+  <meta property="og:title" content="Scraping bioRxiv" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/categories/general//" />
+  <meta property="og:url" content="/blog/2018/02/27/2018-02-27-scraping-biorxiv-getting-started//" />
   <meta property="og:image" content="" />
 
 </head>
@@ -69,6 +69,7 @@
     <div id="all">
 
         <header>
+
 		  
 <div id="top">
   <div class="container">
@@ -172,7 +173,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>General</h1>
+                <h1>Scraping bioRxiv</h1>
             </div>
         </div>
     </div>
@@ -181,62 +182,62 @@
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
+                    <div class="col-md-9" id="blog-post">
 
+                        <p class="text-muted text-uppercase mb-small text-right" style="margin-right:20px;">By <a href="#">Paul Hook</a> | February 27, 2018</p>
+
+                        <div id="post-content">
+                          <div id="scraping-biorxiv" class="section level2">
+<h2>Scraping bioRxiv</h2>
+<p>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found <a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>here</a></p>
+<div id="scraping-in-r" class="section level3">
+<h3>scraping in R</h3>
+<p>When I first began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Scraping seemed like a good idea because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information and B) Whether or not the paper is published is displayed clearly on each preprint’s page (see below).</p>
+<p>As I have most of my coding experience in R, I immediately started to try to find a was to scrape websites in R. Luckily as</p>
+<hr />
+<center>
+<img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
+</br>
+<figcaption>
+<em>An example bioRxiv page</em>
+</figcaption>
+</center>
+<hr />
+</div>
+</div>
+
+                        </div>
                         
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/2018/02/20/2018-02-20-my-first-blog-post/">
-                                          
-                                          <img src="/img/one-for-first-blog-post.png" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/2018/02/20/2018-02-20-my-first-blog-post/">My first blog post!</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          By <a href="#">Paul Hook</a>
-                                          
-                                          
-                                          
-                                          in <a href="/categories/general">general</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/2018/02/20/2018-02-20-my-first-blog-post/"><i class="fa fa-calendar-o"></i> February 20, 2018</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">Hello! If you haven’t been able to tell by the website already, my name is Paul Hook.
-I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine.
-You can learn alittle bit more about me here, so I won’t go on and on in the inaugural blog post.
- One of the reasons I was driven to create a website/blog was the blog of one of my former Human Genetics program-mates, Shannon Ellis.</p>
-                                    <p class="read-more"><a href="/blog/2018/02/20/2018-02-20-my-first-blog-post/" class="btn btn-template-main">Continue reading</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-pwh124-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
                         
 
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">Older &rarr;</a></li>
-                            
-                        </ul>
                     </div>
                     
 
@@ -342,6 +343,7 @@ You can learn alittle bit more about me here, so I won’t go on and on in the i
 
                 </div>
                 
+
             </div>
             
         </div>

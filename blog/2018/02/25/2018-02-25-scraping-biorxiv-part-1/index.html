@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scraping bioRxiv Part 1</title>
+  <title>Keeping track of preprints</title>
   <meta name="author" content="" />
 
   
@@ -56,7 +56,7 @@
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Paul Hook">
 
   
-  <meta property="og:title" content="Scraping bioRxiv Part 1" />
+  <meta property="og:title" content="Keeping track of preprints" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1//" />
   <meta property="og:image" content="" />
@@ -173,7 +173,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Scraping bioRxiv Part 1</h1>
+                <h1>Keeping track of preprints</h1>
             </div>
         </div>
     </div>
@@ -194,7 +194,7 @@
                         <div id="post-content">
                           <div id="premise" class="section level2">
 <h2>Premise</h2>
-<p>For my first actual blog post, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by <a href="https://shanellis.github.io/about/" target="_blank">Shannon Ellis</a> in her wonderful blog post <a href="https://shanellis.github.io/2017/09/05/Preprints/" target="_blank">“Let there be preprint citations!”</a> (emphasis is mine):</p>
+<p>For my first set of blog posts, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by <a href="https://shanellis.github.io/about/" target="_blank">Shannon Ellis</a> in her wonderful blog post <a href="https://shanellis.github.io/2017/09/05/Preprints/" target="_blank">“Let there be preprint citations!”</a> (emphasis is mine):</p>
 <blockquote>
 <p>Problem #2: Preprints often become peer-reviewed research. <strong>How will we keep track?</strong></p>
 <p>Solution #2a (if this occurs during while the manuscript is being drafted): <strong>It is up to the author(s)</strong> to ensure that their manuscript is as up to date as possible upon submission for publication.*</p>
@@ -209,18 +209,15 @@
 <h2>Goal</h2>
 <p>Figure out how to automatically check to see if a preprint on bioRxiv is published.</p>
 </div>
-<div id="scraping-in-r" class="section level2">
-<h2>scraping in R</h2>
-<p>When this idea first came to me, the mysterious world of “HTML scraping” seemed like something that would help. That seemed like a good idea because: A) It doesn’t seem like there are simple/easy ways to access a database within bioRxiv that holds that information and B) Whether or not the paper is published is displayed clearly on each preprint’s page (see below).</p>
-<hr />
-<center>
-<img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
-</br>
-<figcaption>
-<em>An example bioRxiv page</em>
-</figcaption>
-</center>
-<hr />
+<div id="future-posts" class="section level2">
+<h2>Future Posts</h2>
+<p>In order to prevent any one blog post from being too long, I will break this series up into multiple parts which will span multiple future blog posts:</p>
+<ul>
+<li>Part 1: Scraping bioRxiv</li>
+<li>Part 2: Using Javascript to get the information we need</li>
+<li>Part 3: Formatting bioRxiv publication data and other metadata</li>
+<li>Part 4: Turning this information into something useable for citation tracking</li>
+</ul>
 </div>
 
                         </div>
@@ -297,16 +294,16 @@
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="/categories/biorxiv">biorxiv (1)</a>
+            <li><a href="/categories/biorxiv">biorxiv (2)</a>
             </li>
             
             <li><a href="/categories/general">general (1)</a>
             </li>
             
-            <li><a href="/categories/r">r (1)</a>
+            <li><a href="/categories/r">r (2)</a>
             </li>
             
-            <li><a href="/categories/scrape">scrape (1)</a>
+            <li><a href="/categories/scrape">scrape (2)</a>
             </li>
             
         </ul>
