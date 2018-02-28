@@ -6,21 +6,10 @@
     <description>Recent content on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Scraping bioRxiv Part 1</title>
-      <link>/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/</link>
-      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/</guid>
-      <description>Premise For my first actual blog post, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by Shannon Ellis in her wonderful blog post “Let there be preprint citations!” (emphasis is mine):
- Problem #2: Preprints often become peer-reviewed research. How will we keep track?
-Solution #2a (if this occurs during while the manuscript is being drafted): It is up to the author(s) to ensure that their manuscript is as up to date as possible upon submission for publication.</description>
-    </item>
     
     <item>
       <title>My first blog post!</title>
