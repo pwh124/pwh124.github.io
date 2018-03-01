@@ -76,9 +76,10 @@ Please feel free to contact us, our customer service center is working for you 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/papers/</guid>
-      <description>Grad school Preprints Single-cell RNA-seq of mouse dopaminergic neurons informs candidate gene selection for sporadic Parkinson’s disease. Paul W. Hook, Sarah A. McClymont, Gabrielle H. Cannon, William D. Law, A. Jennifer Morton, Loyal A. Goff, Andrew S. McCallion. bioRxiv 148049; doi: 10.1101/148049
+      <description>Grad school 2018 Hook, P.W., McClymont, S.A., Cannon, G.H., Law, W.D., Morton, A.J., Goff, L.A., and McCallion, A.S. (2018). Single-Cell RNA-Seq of Mouse Dopaminergic Neurons Informs Candidate Gene Selection for Sporadic Parkinson Disease. Am. J. Hum. Genet. 102, 427-446. doi: http://dx.doi.org/10.1016/j.ajhg.2018.02.001
+If DOI links do not work yet, find the paper here
  Github: https://github.com/pwh124/sc-da-parkinsons
- Website: https://pwh124.github.io/sc-da-parkinsons/   2018  2016 Turner, T.N., Hormozdiari, F., Duyzend, M.H., McClymont, S.A., Hook, P.W., Iossifov, I., Raja, A., Baker, C., Hoekzema, K.</description>
+ Website: https://pwh124.github.io/sc-da-parkinsons/   2016 Turner, T.N., Hormozdiari, F., Duyzend, M.H., McClymont, S.A., Hook, P.</description>
     </item>
     
     <item>
@@ -89,12 +90,10 @@ Please feel free to contact us, our customer service center is working for you 2
       <guid>/project/</guid>
       <description>Single-cell RNA-seq of dopaminergic neurons Github: https://github.com/pwh124/sc-da-parkinsons
 This Gitub repo contains code for analyses and figures associated with Hook, et al., 2018
+If DOI links do not work yet, find the paper here
 Website: https://pwh124.github.io/sc-da-parkinsons/
 I created this website from the Github repo above using the workflowr package. I wanted to create this website so that my data would be more accessible and reproducible.
-Single-cell gene expression R Shiny App
- Github: https://github.com/pwh124/th-expression-shiny
- Website: https://pwh124.shinyapps.io/expressionshiny/ 
-  I got the bug to create a Shiny App in an attempt to mirror some of the websites made for various other single-cell RNA-seq projects.</description>
+Single-cell gene expression R Shiny App</description>
     </item>
     
   </channel>
