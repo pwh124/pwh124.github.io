@@ -6,10 +6,32 @@
     <description>Recent content in R on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scraping bioRxiv</title>
+      <link>/blog/2018/02/27/2018-02-27-scraping-biorxiv-getting-started/</link>
+      <pubDate>Tue, 27 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/02/27/2018-02-27-scraping-biorxiv-getting-started/</guid>
+      <description>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found here.
+Scraping in R When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML documents that make up websites.
+HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-review journal is displayed clearly on each preprint’s page (see below on the webpage in red).</description>
+    </item>
+    
+    <item>
+      <title>Keeping track of preprints</title>
+      <link>/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/</guid>
+      <description>Premise For my first set of blog posts, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by Shannon Ellis in her wonderful blog post “Let there be preprint citations!” (emphasis is mine):
+ Problem #2: Preprints often become peer-reviewed research. How will we keep track?
+Solution #2a (if this occurs during while the manuscript is being drafted): It is up to the author(s) to ensure that their manuscript is as up to date as possible upon submission for publication.</description>
+    </item>
     
     <item>
       <title>My first blog post!</title>

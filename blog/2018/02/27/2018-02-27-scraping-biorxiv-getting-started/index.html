@@ -192,23 +192,107 @@
                         <p class="text-muted text-uppercase mb-small text-right" style="margin-right:20px;">By <a href="#">Paul Hook</a> | February 27, 2018</p>
 
                         <div id="post-content">
-                          <div id="scraping-biorxiv" class="section level2">
-<h2>Scraping bioRxiv</h2>
-<p>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found <a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>here</a></p>
+                          <p>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found <a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>here</a>.</p>
 <div id="scraping-in-r" class="section level3">
-<h3>scraping in R</h3>
-<p>When I first began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Scraping seemed like a good idea because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information and B) Whether or not the paper is published is displayed clearly on each preprint’s page (see below).</p>
-<p>As I have most of my coding experience in R, I immediately started to try to find a was to scrape websites in R. Luckily as</p>
+<h3>Scraping in R</h3>
+<p>When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML documents that make up websites.</p>
+<p>HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-review journal is displayed clearly on each preprint’s page (see below on the webpage in red).</p>
 <hr />
 <center>
 <img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
 </br>
 <figcaption>
-<em>An example bioRxiv page</em>
+<em>An example bioRxiv page. Peer-reviewed publication is listed in red under the author list.</em>
 </figcaption>
 </center>
 <hr />
+<p>As I have most of my coding experience in R, I immediately started to try to find a was to scrape websites in R. Luckily, the great <a href="http://hadley.nz/" target="_blank">Hadley Wickham</a> designed the perfect package for this, <a href="https://github.com/hadley/rvest" target="_blank">rvest</a>. Staring here I began to explore rvest as well as other tools that would help me scrape in R.</p>
 </div>
+<div id="finding-biorxiv-paper-title-with-selectorgadget" class="section level3">
+<h3>Finding bioRxiv paper title with SelectorGadget</h3>
+<p>As Hadley Wickham suggests in the <a href="https://github.com/hadley/rvest" target="_blank">rvest documentation</a>, I started making myself familiar with the <a href="http://selectorgadget.com/" target="_blank">SelectorGadget tool</a>. This tool allows you to click on various parts of a webpage and find what they are coded as in the HTML code of the website. This is a super easy way to start finding things to scrape!</p>
+<p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let’s start by clicking on the title of the paper with SelectorGadget!</p>
+<hr />
+<center>
+<img src="/img/selectorGadget-ex-mod.png" alt="bioRxiv-mod" style="width:800px;"><br />
+</br>
+<figcaption>
+<em>SelectorGadget shows me where I can find the title</em>
+</figcaption>
+</center>
+<hr />
+<p>As you can see, when I click on the title, SelectorGadget tells me I can find the title of the paper in the “#page-title” page element.</p>
+</div>
+<div id="finding-biorxiv-paper-title-with-rvest" class="section level3">
+<h3>Finding bioRxiv paper title with rvest</h3>
+<p>Now that I know the HTML page element to scrape, I can try to scrape that element using rvest.</p>
+<p>First I need to load the rvest and dplyr packages.</p>
+<pre class="r"><code>library(rvest)
+library(dplyr)</code></pre>
+<p>Now I can use the rvest package. The first basic function I used is the “read_html()” function that will take a URL and make an “xml_document” object in R that holds pointers to the website document. You can also view the top of the of xml document in R.</p>
+<pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
+head(ex_paper)</code></pre>
+<pre><code>## $node
+## &lt;pointer: 0x7f937ae0c5f0&gt;
+## 
+## $doc
+## &lt;pointer: 0x7f937ae83f90&gt;</code></pre>
+<pre class="r"><code>ex_paper</code></pre>
+<pre><code>## {xml_document}
+## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# article: http://ogp.me/ns/articl ...
+## [2] &lt;body class=&quot;html not-front not-logged-in page-node page-node- page- ...</code></pre>
+<p>With rvest, I can then extract the page element I am interested in (the title) using the page element (“#page-title”) I found using SelectorGadget. The rvest function “html_node()” uses the page element to pull that element out. I can then use the “html_text()” function to pull out the text under the page element.</p>
+<pre class="r"><code>title &lt;- ex_paper %&gt;%
+  html_node(&quot;#page-title&quot;) %&gt;%
+  html_text()
+
+title</code></pre>
+<pre><code>## [1] &quot;On the design of CRISPR-based single cell molecular screens&quot;</code></pre>
+<p>The title (“On the design of CRISPR-based single cell molecular screens”) was successfully scraped from the page!</p>
+</div>
+<div id="scraping-other-useful-information" class="section level3">
+<h3>Scraping other useful information</h3>
+<p>This same strategy can be used to extract other things from the page including the date it was published on bioRxiv and the DOI (with the help of the <a href="https://github.com/tidyverse/stringr" target="_blank">stringr</a> and <a href="http://magrittr.tidyverse.org/index.html" target="_blank">magritter</a> packages).</p>
+<pre class="r"><code>library(stringr)
+library(magrittr)
+
+# I know this is messy but...
+bior_date &lt;- ex_paper %&gt;%
+  html_nodes(&quot;.published&quot;) %&gt;%
+  html_text() %&gt;%
+  strsplit(split = &quot; &quot;) %&gt;%
+  unlist() %&gt;%
+  extract(c(2,3,4))
+biorxiv_date &lt;- paste(bior_date[1],bior_date[2],bior_date[3], sep = &quot; &quot;)
+  tmp &lt;- gsub(&quot;.&quot;, &quot;&quot;, biorxiv_date, fixed = TRUE)
+  tmp2 &lt;- gsub(&quot;,&quot;,&quot;&quot;,tmp,fixed = T)
+  date &lt;- as.Date(tmp2, &quot;%b %d %Y&quot;)
+
+biorxiv_doi &lt;- ex_paper %&gt;%
+    html_node(&quot;.highwire-cite-metadata-doi&quot;) %&gt;%
+    html_text() %&gt;%
+    strsplit(split = &quot; &quot;) %&gt;%
+    unlist() %&gt;% 
+    extract(2)
+
+biorxiv_doi</code></pre>
+<pre><code>## [1] &quot;https://doi.org/10.1101/254334&quot;</code></pre>
+<pre class="r"><code>date</code></pre>
+<pre><code>## [1] &quot;2018-02-12&quot;</code></pre>
+</div>
+<div id="tracking-whether-or-not-the-preprint-has-been-published" class="section level3">
+<h3>Tracking whether or not the preprint has been published</h3>
+<p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-review journal should be easy… it is right there on the page (see the above images)!</p>
+<p>So I used SelectorGadget and found that the peer-reviewed journal should be found using the “.pub_jnl” page element.</p>
+<pre class="r"><code>pub &lt;- ex_paper %&gt;%
+  html_node(&quot;.pub_jnl&quot;) %&gt;%
+  html_text()
+
+pub</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>However, it seems that that the page element “.pub_jnl” does not have any text in the HTML document I am scraping, making this a much tougher problem than I initially thought.</p>
+<p>I will attempt to understand and tackle this problem in my next post!</p>
 </div>
 
                         </div>
