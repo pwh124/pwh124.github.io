@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blogs</title>
+  <title>Keeping track of preprints</title>
   <meta name="author" content="" />
 
   
@@ -56,9 +56,9 @@
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Paul Hook">
 
   
-  <meta property="og:title" content="Blogs" />
+  <meta property="og:title" content="Keeping track of preprints" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog//" />
+  <meta property="og:url" content="/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1//" />
   <meta property="og:image" content="" />
 
 </head>
@@ -69,6 +69,7 @@
     <div id="all">
 
         <header>
+
 		  
 <div id="top">
   <div class="container">
@@ -172,7 +173,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Blogs</h1>
+                <h1>Keeping track of preprints</h1>
             </div>
         </div>
     </div>
@@ -181,99 +182,72 @@
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
+                    <div class="col-md-9" id="blog-post">
 
+                        <p class="text-muted text-uppercase mb-small text-right" style="margin-right:20px;">By <a href="#">Paul Hook</a> | April 4, 2018</p>
+
+                        <div id="post-content">
+                          <div id="premise" class="section level2">
+<h2>Premise</h2>
+<p>For my first set of blog posts, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by <a href="https://shanellis.github.io/about/" target="_blank">Shannon Ellis</a> in her wonderful blog post <a href="https://shanellis.github.io/2017/09/05/Preprints/" target="_blank">“Let there be preprint citations!”</a> (emphasis is mine):</p>
+<blockquote>
+<p>Problem #2: Preprints often become peer-reviewed research. <strong>How will we keep track?</strong></p>
+<p>Solution #2a (if this occurs during while the manuscript is being drafted): <strong>It is up to the author(s)</strong> to ensure that their manuscript is as up to date as possible upon submission for publication.*</p>
+<p>Solution #2b (if this occurs during while the manuscript is under review): <strong>Yup. Still the authors’ responsibility</strong>*, but a reminder or tool to ensure accuracy from the publisher would be more than welcome.</p>
+<p>Solution #2c (if this occurs post-publication): If the preprint was cited and it later goes through peer review, that does not matter. You cited the preprint. You meant to reference the preprint.</p>
+</blockquote>
+<p>For whatever reason, Shannon posing the question, “How will we keep track?” really piqued my interest.</p>
+<p>Now obviously if you are only keeping track of one or two bioRxiv papers that were cited in your paper then you could keep those pages bookmarked and check back when revisions are being made. Outside of the realm of citing preprints in papers, I think having an automated way to keep track of unpublished/published bioRxiv papers could have an everyday, practical use. With Twitter being my main source, I see new bioRxiv papers every day whether it be through authors promoting their own work or one of the bioRxiv bots blasting out recently posted preprints. As the preprints pileup, it becomes more difficult to keep track of what is happening with them, especially since publishing is not a short process.</p>
+<p>I also imagined some glorious future where preprints are the norm and you may need to keep an eye on dozens of papers at a time for your manuscript. The task of searching to check to see if those papers were eventually published would no longer be trivial and it would be nice if that task were automated (somewhat). Version tracking those important preprints would also be nice.</p>
+</div>
+<div id="goal" class="section level2">
+<h2>Goal</h2>
+<p>Figure out how to automatically check to see if a preprint on bioRxiv is published.</p>
+</div>
+<div id="future-posts" class="section level2">
+<h2>Future Posts</h2>
+<p>In order to prevent any one blog post from being too long, I will break this series up into multiple parts which will span multiple, future, <em>tenative</em> blog posts:</p>
+<ul>
+<li>Part 1: Scraping bioRxiv</li>
+<li>Part 2: Parsing Javascript in R to get the information we want</li>
+<li>Part 3: Formatting bioRxiv publication data and other metadata</li>
+<li>Part 4: Automating the bioRxiv search process in R</li>
+<li>Part 5: Putting it all together and making it useable for citation tracking</li>
+</ul>
+</div>
+
+                        </div>
                         
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1/">
-                                          
-                                          <img src="/img/banners/frost-windshield.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1/">Keeping track of preprints</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          By <a href="#">Paul Hook</a>
-                                          
-                                          
-                                          
-                                          in <a href="/categories/r">R</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1/"><i class="fa fa-calendar-o"></i> April 4, 2018</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">Premise For my first set of blog posts, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by Shannon Ellis in her wonderful blog post “Let there be preprint citations!” (emphasis is mine):
- Problem #2: Preprints often become peer-reviewed research. How will we keep track?
-Solution #2a (if this occurs during while the manuscript is being drafted): It is up to the author(s) to ensure that their manuscript is as up to date as possible upon submission for publication.</p>
-                                    <p class="read-more"><a href="/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1/" class="btn btn-template-main">Continue reading</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/2018/04/03/2018-02-20-my-first-blog-post/">
-                                          
-                                          <img src="/img/one-for-first-blog-post.png" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/2018/04/03/2018-02-20-my-first-blog-post/">My first blog post!</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          By <a href="#">Paul Hook</a>
-                                          
-                                          
-                                          
-                                          in <a href="/categories/general">general</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/2018/04/03/2018-02-20-my-first-blog-post/"><i class="fa fa-calendar-o"></i> April 3, 2018</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">Hello! If you haven’t been able to tell by the website already, my name is Paul Hook.
-I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion’s lab.
-You can learn a little more about me here, so I won’t go on and on in the inaugural blog post.</p>
-                                    <p class="read-more"><a href="/blog/2018/04/03/2018-02-20-my-first-blog-post/" class="btn btn-template-main">Continue reading</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-pwh124-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
                         
 
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">Older &rarr;</a></li>
-                            
-                        </ul>
                     </div>
                     
 
@@ -379,6 +353,7 @@ You can learn a little more about me here, so I won’t go on and on in the inau
 
                 </div>
                 
+
             </div>
             
         </div>
