@@ -206,12 +206,12 @@
 </figcaption>
 </center>
 <hr />
-<p>As I have most of my coding experience in R, I immediately started to try to find a way to scrape websites in R. Luckily, the great <a href="http://hadley.nz/" target="_blank">Hadley Wickham</a> designed the perfect package for this, <a href="https://github.com/hadley/rvest" target="_blank">rvest</a>. Staring here I began to explore rvest as well as other tools that would help me scrape in R.</p>
+<p>As I have most of my coding experience in R, I immediately started to try to find a way to scrape websites in R. Luckily, the great <a href="http://hadley.nz/" target="_blank">Hadley Wickham</a> designed the perfect package for this, <a href="https://github.com/hadley/rvest" target="_blank">rvest</a>. Starting here I began to explore rvest as well as other tools that would help me scrape in R.</p>
 </div>
 <div id="finding-biorxiv-paper-title-with-selectorgadget" class="section level3">
 <h3>Finding bioRxiv paper title with SelectorGadget</h3>
-<p>As Hadley Wickham suggests in the <a href="https://github.com/hadley/rvest" target="_blank">rvest documentation</a>, I started making myself familiar with the <a href="http://selectorgadget.com/" target="_blank">SelectorGadget tool</a>. This tool allows you to click on various parts of a webpage and find what they are coded as in the underlying HTML of the website. This is a super easy way to start finding things to scrape!</p>
-<p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let’s start by clicking on the title of the paper with SelectorGadget!</p>
+<p>As Hadley Wickham suggests in the <a href="https://github.com/hadley/rvest" target="_blank">rvest documentation</a>, I started making myself familiar with the <a href="http://selectorgadget.com/" target="_blank">SelectorGadget tool</a>. This tool allows you to click on various parts of a webpage and find what they are coded as in the underlying HTML of the website.</p>
+<p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let’s start by clicking on the title of the paper with SelectorGadget.</p>
 <hr />
 <center>
 <img src="/img/selectorGadget-ex-mod.png" alt="bioRxiv-mod" style="width:800px;"><br />
@@ -233,10 +233,10 @@ library(dplyr)</code></pre>
 <pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
 head(ex_paper)</code></pre>
 <pre><code>## $node
-## &lt;pointer: 0x7fd581cb1d20&gt;
+## &lt;pointer: 0x7fb7c96d61f0&gt;
 ## 
 ## $doc
-## &lt;pointer: 0x7fd581cace20&gt;</code></pre>
+## &lt;pointer: 0x7fb7c96d25d0&gt;</code></pre>
 <pre class="r"><code>ex_paper</code></pre>
 <pre><code>## {xml_document}
 ## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
@@ -283,7 +283,7 @@ biorxiv_doi</code></pre>
 </div>
 <div id="tracking-whether-or-not-the-preprint-has-been-published" class="section level3">
 <h3>Tracking whether or not the preprint has been published</h3>
-<p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-review journal should be easy… it is right there on the page (see the above images)!</p>
+<p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-reviewed journal should be easy since it is displayed clearly on the page (seem images above).</p>
 <p>So I used SelectorGadget and found that the peer-reviewed journal should be found using the “.pub_jnl” page element.</p>
 <pre class="r"><code>pub &lt;- ex_paper %&gt;%
   html_node(&quot;.pub_jnl&quot;) %&gt;%
@@ -291,7 +291,7 @@ biorxiv_doi</code></pre>
 
 pub</code></pre>
 <pre><code>## [1] NA</code></pre>
-<p>However, it seems that that the page element “.pub_jnl” does not have any text in the HTML document I am scraping. I tried to search the underlying documentation to no avail. What seemed on its face to be an easy problem, turns out to be more complicated. I will attempt to understand and tackle this problem in my next post!</p>
+<p>However, it seems that that the page element “.pub_jnl” does not have any text in the HTML document I am scraping. I tried to search the underlying documentation to no avail. What seemed on its face to be an easy problem, turns out to be more complicated. I will attempt to understand and tackle this problem in my next post.</p>
 </div>
 
                         </div>
