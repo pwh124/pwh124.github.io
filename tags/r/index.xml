@@ -6,10 +6,21 @@
     <description>Recent content in R on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scraping bioRxiv</title>
+      <link>/blog/2018/04/10/2018-02-27-scraping-biorxiv-getting-started/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/04/10/2018-02-27-scraping-biorxiv-getting-started/</guid>
+      <description>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found here.
+Scraping in R When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (Hypertext Markup Language) documents that make up websites.
+HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-review journal is displayed clearly on each preprint’s page (see below on the webpage in red).</description>
+    </item>
     
     <item>
       <title>Keeping track of preprints</title>
