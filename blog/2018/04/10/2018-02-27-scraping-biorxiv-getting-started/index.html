@@ -196,7 +196,7 @@
 <div id="scraping-in-r" class="section level3">
 <h3>Scraping in R</h3>
 <p>When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (<em>H</em>ypertext <em>M</em>arkup <em>L</em>anguage) documents that make up websites.</p>
-<p>HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-review journal is displayed clearly on each preprint’s page (see below on the webpage in red).</p>
+<p>HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-reviewed journal is displayed clearly on each preprint’s page (see below on the webpage in red).</p>
 <hr />
 <center>
 <img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
@@ -208,8 +208,8 @@
 <hr />
 <p>As I have most of my coding experience in R, I immediately started to try to find a way to scrape websites in R. Luckily, the great <a href="http://hadley.nz/" target="_blank">Hadley Wickham</a> designed the perfect package for this, <a href="https://github.com/hadley/rvest" target="_blank">rvest</a>. Starting here I began to explore rvest as well as other tools that would help me scrape in R.</p>
 </div>
-<div id="finding-biorxiv-paper-title-with-selectorgadget" class="section level3">
-<h3>Finding bioRxiv paper title with SelectorGadget</h3>
+<div id="finding-a-biorxiv-paper-title-with-selectorgadget" class="section level3">
+<h3>Finding a bioRxiv paper title with SelectorGadget</h3>
 <p>As Hadley Wickham suggests in the <a href="https://github.com/hadley/rvest" target="_blank">rvest documentation</a>, I started making myself familiar with the <a href="http://selectorgadget.com/" target="_blank">SelectorGadget tool</a>. This tool allows you to click on various parts of a webpage and find what they are coded as in the underlying HTML of the website.</p>
 <p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let’s start by clicking on the title of the paper with SelectorGadget.</p>
 <hr />
@@ -225,7 +225,7 @@
 </div>
 <div id="finding-a-biorxiv-paper-title-with-rvest" class="section level3">
 <h3>Finding a bioRxiv paper title with rvest</h3>
-<p>Now that I know the HTML page element to scrape, I can try to scrape it using rvest.</p>
+<p>Now that I know the HTML element to scrape, I can try to scrape it using rvest.</p>
 <p>First I need to load the rvest and dplyr packages.</p>
 <pre class="r"><code>library(rvest)
 library(dplyr)</code></pre>
@@ -233,16 +233,16 @@ library(dplyr)</code></pre>
 <pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
 head(ex_paper)</code></pre>
 <pre><code>## $node
-## &lt;pointer: 0x7fb7c96d61f0&gt;
+## &lt;pointer: 0x7fdc58f08920&gt;
 ## 
 ## $doc
-## &lt;pointer: 0x7fb7c96d25d0&gt;</code></pre>
+## &lt;pointer: 0x7fdc58f2e440&gt;</code></pre>
 <pre class="r"><code>ex_paper</code></pre>
 <pre><code>## {xml_document}
 ## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
 ## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# article: http://ogp.me/ns/articl ...
 ## [2] &lt;body class=&quot;html not-front not-logged-in page-node page-node- page- ...</code></pre>
-<p>With rvest, I can then extract the page element I am interested in (the title) using the page element (“#page-title”) I found using SelectorGadget. The rvest function “html_node()” uses the page element to extract that chunk of HTML. I can then use the “html_text()” function to pull out the text in that chunk.</p>
+<p>With rvest, I can then extract the page element I am interested in (the title) using the page element (“#page-title”) I found using SelectorGadget. The rvest function “html_node()” uses the name of the page element to extract that chunk of HTML. I can then use the “html_text()” function to pull out the text in that chunk.</p>
 <pre class="r"><code>title &lt;- ex_paper %&gt;%
   html_node(&quot;#page-title&quot;) %&gt;%
   html_text()
@@ -283,7 +283,7 @@ biorxiv_doi</code></pre>
 </div>
 <div id="tracking-whether-or-not-the-preprint-has-been-published" class="section level3">
 <h3>Tracking whether or not the preprint has been published</h3>
-<p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-reviewed journal should be easy since it is displayed clearly on the page (seem images above).</p>
+<p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-reviewed journal should be easy since it is displayed clearly on the page (see images above).</p>
 <p>So I used SelectorGadget and found that the peer-reviewed journal should be found using the “.pub_jnl” page element.</p>
 <pre class="r"><code>pub &lt;- ex_paper %&gt;%
   html_node(&quot;.pub_jnl&quot;) %&gt;%
