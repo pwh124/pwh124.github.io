@@ -228,9 +228,8 @@
 </blockquote>
 <p>Now, I can start to headlessly browse.</p>
 <pre class="r"><code>library(RSelenium)
-library(rvest)</code></pre>
-<pre><code>## Loading required package: xml2</code></pre>
-<pre class="r"><code>library(magrittr) # This package will help with some text manipulation I&#39;ll do in a second</code></pre>
+library(rvest)
+library(magrittr) # This package will help with some text manipulation I&#39;ll do in a second</code></pre>
 <p>The RSeleniium <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html" target="_blank">documentation</a> was very helpful when trying to do this and my strategy is taken from there.</p>
 <pre class="r"><code># https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html
 
@@ -241,11 +240,11 @@ remDr &lt;- remoteDriver(browserName = &#39;phantomjs&#39;) # communicate with t
 remDr$open(silent = T) # open the connection
 
 # Use RSelenium to go to the webpage I want
-remDr$navigate(&#39;https://www.biorxiv.org/content/early/2015/03/04/015859&#39;)
+remDr$navigate(&#39;https://www.biorxiv.org/content/early/2018/02/12/254334&#39;)
 
 # Grab the title of the webpage
 remDr$getTitle()[[1]]</code></pre>
-<pre><code>## [1] &quot;Modeling Linkage Disequilibrium Increases Accuracy of Polygenic Risk Scores | bioRxiv&quot;</code></pre>
+<pre><code>## [1] &quot;On the design of CRISPR-based single cell molecular screens | bioRxiv&quot;</code></pre>
 <p>I have successfuly navigated to the bioRxiv page and I can see that the page has the correct title. Now I would like to get the entire page and read the HTML so I can scrape any component I want from the page. That can be done using the “remoteDriver$getPageSource()” and “read_html()” commands.</p>
 <pre class="r"><code># Grab the documents underlying the website
 hlink &lt;- remDr$getPageSource()[[1]] %&gt;%
@@ -260,7 +259,7 @@ title &lt;- hlink %&gt;%
   html_text()
 
 title</code></pre>
-<pre><code>## [1] &quot;Modeling Linkage Disequilibrium Increases Accuracy of Polygenic Risk Scores&quot;</code></pre>
+<pre><code>## [1] &quot;On the design of CRISPR-based single cell molecular screens&quot;</code></pre>
 <p>And I can move on to trying to scrape the publication information on the page and format the paper’s peer-reviewed DOI number, which will provide a unique identifier for the published version of the paper.</p>
 <pre class="r"><code>pub_string &lt;- hlink %&gt;%
     html_nodes(&quot;.pub_jnl&quot;) %&gt;%
@@ -270,11 +269,9 @@ title</code></pre>
     unlist()
 
 pub_string</code></pre>
-<pre><code>##  [1] &quot;Now&quot;                        &quot;published&quot;                 
-##  [3] &quot;in&quot;                         &quot;American&quot;                  
-##  [5] &quot;Journal&quot;                    &quot;of&quot;                        
-##  [7] &quot;Human&quot;                      &quot;Genetics&quot;                  
-##  [9] &quot;doi:&quot;                       &quot;10.1016/j.ajhg.2015.09.001&quot;</code></pre>
+<pre><code>## [1] &quot;Now&quot;                &quot;published&quot;          &quot;in&quot;                
+## [4] &quot;Nature&quot;             &quot;Methods&quot;            &quot;doi:&quot;              
+## [7] &quot;10.1038/nmeth.4604&quot;</code></pre>
 <pre class="r"><code>if(&quot;preprint&quot; %in% pub_string){
   pub_doi &lt;- &quot;NA&quot;
 } else {
@@ -282,7 +279,7 @@ pub_string</code></pre>
 }
 
 pub_doi</code></pre>
-<pre><code>## [1] &quot;10.1016/j.ajhg.2015.09.001&quot;</code></pre>
+<pre><code>## [1] &quot;10.1038/nmeth.4604&quot;</code></pre>
 <p>By scraping the website after Javascript elements have been loaded, the bioRxiv page has now been successfully scraped for the publication information. With this ability, any preprint on bioRxiv can now be linked to the DOI for the peer-reviewed version of the paper. With the DOI in hand, all the information about this paper can now be parsed and linked to the preprint as well.</p>
 <p>Automating this approach and pulling out all the information that would link a preprint to the peer-reviewed version of a paper will be the subject of my next blog posts.</p>
 </div>
