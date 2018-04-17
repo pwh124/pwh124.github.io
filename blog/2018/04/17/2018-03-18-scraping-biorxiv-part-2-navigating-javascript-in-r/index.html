@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scraping bioRxiv</title>
+  <title>Scraping bioRxiv - Part 2: Navigating Javascript in R</title>
   <meta name="author" content="" />
 
   
@@ -56,9 +56,9 @@
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Paul Hook">
 
   
-  <meta property="og:title" content="Scraping bioRxiv" />
+  <meta property="og:title" content="Scraping bioRxiv - Part 2: Navigating Javascript in R" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/2018/04/10/2018-02-27-scraping-biorxiv-getting-started//" />
+  <meta property="og:url" content="/blog/2018/04/17/2018-03-18-scraping-biorxiv-part-2-navigating-javascript-in-r//" />
   <meta property="og:image" content="" />
 
 </head>
@@ -173,7 +173,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Scraping bioRxiv</h1>
+                <h1>Scraping bioRxiv - Part 2: Navigating Javascript in R</h1>
             </div>
         </div>
     </div>
@@ -189,14 +189,19 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right" style="margin-right:20px;">By <a href="#">Paul Hook</a> | April 10, 2018</p>
+                        <p class="text-muted text-uppercase mb-small text-right" style="margin-right:20px;">By <a href="#">Paul Hook</a> | April 17, 2018</p>
 
                         <div id="post-content">
-                          <p>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found <a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>here</a>.</p>
-<div id="scraping-in-r" class="section level3">
-<h3>Scraping in R</h3>
-<p>When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (<em>H</em>ypertext <em>M</em>arkup <em>L</em>anguage) documents that make up websites.</p>
-<p>HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-reviewed journal is displayed clearly on each preprint’s page (see below on the webpage in red).</p>
+                          <div id="tldr" class="section level3">
+<h3>tl;dr</h3>
+<p>The area on bioRxiv pages that displays where the paper was published is populated using Javascript when the page is loaded. The R package RSelenium allows for the scraping of anything created by Javascript, including the published paper’s DOI.</p>
+</div>
+<div id="where-i-left-off" class="section level3">
+<h3>Where I left off</h3>
+<p><a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>In my ongoing series of blog posts</a> attempting to track the publishing of papers on bioRxiv,<a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I left off</a> with being able to scrape bioRxiv pages in R but not being able to extract the information about the published peer-reviewed version of the paper.</p>
+</div>
+<div id="why-cant-i-scrape-the-publishing-information" class="section level3">
+<h3>Why can’t I scrape the publishing information?</h3>
 <hr />
 <center>
 <img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
@@ -206,92 +211,84 @@
 </figcaption>
 </center>
 <hr />
-<p>As I have most of my coding experience in R, I immediately started to try to find a way to scrape websites in R. Luckily, the great <a href="http://hadley.nz/" target="_blank">Hadley Wickham</a> designed the perfect package for this, <a href="https://github.com/hadley/rvest" target="_blank">rvest</a>. Starting here I began to explore rvest as well as other tools that would help me scrape in R.</p>
+<p><a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I had written about before</a> that if a paper posted on bioRxiv goes on to be published in a peer-reviewed journal, that information (journal name, DOI number) appears on the paper’s bioRxiv page (seen above). However, when I went to scrape that information, it appears as “blank.” I can scrape other information off the page, why not that?</p>
+<p>This question tested my very limited knownledge about websites and the HTML behind them. Luckily, I know how to use Google. I found this article <a href="https://www.makeuseof.com/tag/what-is-javascript/" target='_blank'>great article</a> from <a href="https://www.makeuseof.com/" class="uri">https://www.makeuseof.com/</a>.</p>
+<p>The short of it is that internet browsers use Javascript to load elements of webpages but only after the HTML has been parsed. The R package I am using (rvest) seems to only read/scrape the HTML code of a website, anything that is dynamically loaded by Javascript in a browser will not be accessed.</p>
 </div>
-<div id="finding-a-biorxiv-paper-title-with-selectorgadget" class="section level3">
-<h3>Finding a bioRxiv paper title with SelectorGadget</h3>
-<p>As Hadley Wickham suggests in the <a href="https://github.com/hadley/rvest" target="_blank">rvest documentation</a>, I started making myself familiar with the <a href="http://selectorgadget.com/" target="_blank">SelectorGadget tool</a>. This tool allows you to click on various parts of a webpage and find what they are coded as in the underlying HTML of the website.</p>
-<p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let’s start by clicking on the title of the paper with SelectorGadget.</p>
-<hr />
-<center>
-<img src="/img/selectorGadget-ex-mod.png" alt="bioRxiv-mod" style="width:800px;"><br />
-</br>
-<figcaption>
-<em>SelectorGadget shows me where I can find the title</em>
-</figcaption>
-</center>
-<hr />
-<p>As you can see, when I click on the title, SelectorGadget tells me I can find the title of the paper in the “#page-title” page element.</p>
-</div>
-<div id="finding-a-biorxiv-paper-title-with-rvest" class="section level3">
-<h3>Finding a bioRxiv paper title with rvest</h3>
-<p>Now that I know the HTML element to scrape, I can try to scrape it using rvest.</p>
-<p>First I need to load the rvest and dplyr packages.</p>
-<pre class="r"><code>library(rvest)
-library(dplyr)</code></pre>
-<p>Now I can use the rvest package. The first basic function I used is the “read_html()” function that will take a URL and make an “xml_document” object in R that holds pointers to the website document. You can also view the top of the of xml document in R.</p>
-<pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
-head(ex_paper)</code></pre>
-<pre><code>## $node
-## &lt;pointer: 0x7fb70a7f2280&gt;
-## 
-## $doc
-## &lt;pointer: 0x7fb70e810b90&gt;</code></pre>
-<pre class="r"><code>ex_paper</code></pre>
-<pre><code>## {xml_document}
-## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# article: http://ogp.me/ns/articl ...
-## [2] &lt;body class=&quot;html not-front not-logged-in page-node page-node- page- ...</code></pre>
-<p>With rvest, I can then extract the page element I am interested in (the title) using the page element (“#page-title”) I found using SelectorGadget. The rvest function “html_node()” uses the name of the page element to extract that chunk of HTML. I can then use the “html_text()” function to pull out the text in that chunk.</p>
-<pre class="r"><code>title &lt;- ex_paper %&gt;%
+<div id="using-rselenium-with-rvest-to-scrape-biorxiv" class="section level3">
+<h3>Using RSelenium with rvest to scrape bioRxiv</h3>
+<p>Fortunately, there are ways to mimic a webpage being loaded in a browser.</p>
+<p>Again, through some creative Google-ing, I found that one of the ways to scrape Javascript loaded elements from websites in R is by using a combination of rvest and something called <a hef="http://phantomjs.org/" target="_blank">PhantomJS</a>. Shout out to <a href="https://www.r-bloggers.com/web-scraping-javascript-rendered-sites/" target="_blank">Florian Teschner at R-bloggers</a> and <a href="https://gist.github.com/hrbrmstr/dc62bb2b35617e9badc5" target="_blank">Github user hrbrmstr</a> for the help.</p>
+<p><a hef="http://phantomjs.org/" target="_blank">PhantomJS</a> is what is called a “headless” browser which means that it has no traditional graphical user interface (GUI) and is mostly control through the command-line (Source: <a href="https://en.wikipedia.org/wiki/Headless_browser" target="_blank">Wikipedia</a>). Headless browsers are often used for scraping so PhantomJS sounded perfect for what I needed.</p>
+<p>Unfortunately, the initial ways I found to use PhantomJS and rvest in R (links above), used a program/script that was somewhat external to R. Since I am stubborn, I wanted to use PhantomJS in the R environment. As with most things you want in R, there’s a package for that, <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-basics.html" target="_blank"> RSelenium</a>.</p>
+<p>As I soon found, one can use RSelenium to headlessly browse a webpage using PhantomJS (vingnette <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html" target="_blank">here</a>).</p>
+<p>In order to use this method, PhantomJS needed to be installed in my path. This can be done easily with the package manager <a href="https://brew.sh/" target="_blank">Homebrew</a> and the following command:</p>
+<blockquote>
+<p>Pauls-MacBook-Pro-2:~ paulhook$ brew install phantomjs</p>
+</blockquote>
+<p>Now, I can start to headlessly browse.</p>
+<pre class="r"><code>library(RSelenium)</code></pre>
+<pre><code>## Warning: package &#39;RSelenium&#39; was built under R version 3.3.2</code></pre>
+<pre class="r"><code>library(rvest)</code></pre>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## Warning: package &#39;xml2&#39; was built under R version 3.3.2</code></pre>
+<pre class="r"><code>library(magrittr) # This package will help with some text manipulation I&#39;ll do in a second</code></pre>
+<p>The RSeleniium <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html" target="_blank">documentation</a> was very helpful when trying to do this and my strategy is taken from there.</p>
+<pre class="r"><code># https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html
+
+# Connecting with the Selenium server
+pJS &lt;- phantom() # start the phantom webdriver</code></pre>
+<pre><code>## Warning: The phantom function in RSelenium 
+## is now deprecated and will be defunct in future releases. 
+## Users can drive PhantomJS via selenium using the RSelenium::rsDriver 
+## function or directly using wdman::phantomjs</code></pre>
+<pre class="r"><code>Sys.sleep(10) # the system needs to pause while the phantom binary loads
+remDr &lt;- remoteDriver(browserName = &#39;phantomjs&#39;) # communicate with the Selenium server
+remDr$open(silent = T) # open the connection
+
+# Use RSelenium to go to the webpage I want
+remDr$navigate(&#39;https://www.biorxiv.org/content/early/2015/03/04/015859&#39;)
+
+# Grab the title of the webpage
+remDr$getTitle()[[1]]</code></pre>
+<pre><code>## [1] &quot;Modeling Linkage Disequilibrium Increases Accuracy of Polygenic Risk Scores | bioRxiv&quot;</code></pre>
+<p>I have successfuly navigated to the bioRxiv page I wanted and found the title. Now I would like to get the entire page and read the HTML so I can scrape other components as well. That can be done using the “remoteDriver$getPageSource()” and “read_html()” commands.</p>
+<pre class="r"><code># Grab the documents underlying the website
+hlink &lt;- remDr$getPageSource()[[1]] %&gt;%
+  read_html()</code></pre>
+<p>Now that I have grabbed the HTML to scrape, the connection to the Selenium server and PhantomJS can be closed.</p>
+<pre class="r"><code>remDr$close()
+pJS$stop()</code></pre>
+<p>I can now start scraping what I want with rvest. First, I can scrape the title of the paper.</p>
+<pre class="r"><code>#Title of the paper
+title &lt;- hlink %&gt;%
   html_node(&quot;#page-title&quot;) %&gt;%
   html_text()
 
 title</code></pre>
-<pre><code>## [1] &quot;On the design of CRISPR-based single cell molecular screens&quot;</code></pre>
-<p>The title (“On the design of CRISPR-based single cell molecular screens”) was successfully scraped from the page!</p>
-</div>
-<div id="scraping-other-useful-information" class="section level3">
-<h3>Scraping other useful information</h3>
-<p>I could use this same strategy to extract other things from the page including the date it was published on bioRxiv and the DOI (with the help of the <a href="https://github.com/tidyverse/stringr" target="_blank">stringr</a> and <a href="http://magrittr.tidyverse.org/index.html" target="_blank">magritter</a> packages).</p>
-<pre class="r"><code>library(stringr)
-library(magrittr)
-
-# I know this is messy but...
-date &lt;- ex_paper %&gt;%
-  html_nodes(&quot;.published&quot;) %&gt;%
-  html_text() %&gt;%
-  strsplit(split = &quot; &quot;) %&gt;%
-  unlist() %&gt;%
-  extract(c(2,3,4))
-biorxiv_date &lt;- paste(date[1], date[2], date[3], sep = &quot; &quot;)
-  tmp &lt;- gsub(&quot;.&quot;, &quot;&quot;, biorxiv_date, fixed = TRUE)
-  tmp2 &lt;- gsub(&quot;,&quot;,&quot;&quot;,tmp,fixed = T)
-  date &lt;- as.Date(tmp2, &quot;%b %d %Y&quot;)
-
-biorxiv_doi &lt;- ex_paper %&gt;%
-    html_node(&quot;.highwire-cite-metadata-doi&quot;) %&gt;%
+<pre><code>## [1] &quot;Modeling Linkage Disequilibrium Increases Accuracy of Polygenic Risk Scores&quot;</code></pre>
+<p>And I can move on to trying to scrape the publication information on the page and format the paper’s peer-reviewed DOI number, which will provide a unique identifier for the published version of the paper.</p>
+<pre class="r"><code>pub_string &lt;- hlink %&gt;%
+    html_nodes(&quot;.pub_jnl&quot;) %&gt;%
     html_text() %&gt;%
-    strsplit(split = &quot; &quot;) %&gt;%
-    unlist() %&gt;% 
-    extract(2)
+    extract(1) %&gt;%
+    strsplit(&quot; &quot;) %&gt;%
+    unlist()
 
-biorxiv_doi</code></pre>
-<pre><code>## [1] &quot;https://doi.org/10.1101/254334&quot;</code></pre>
-<pre class="r"><code>date</code></pre>
-<pre><code>## [1] &quot;2018-02-12&quot;</code></pre>
-</div>
-<div id="tracking-whether-or-not-the-preprint-has-been-published" class="section level3">
-<h3>Tracking whether or not the preprint has been published</h3>
-<p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-reviewed journal should be easy since it is displayed clearly on the page (see images above).</p>
-<p>So I used SelectorGadget and found that the peer-reviewed journal should be found using the “.pub_jnl” page element.</p>
-<pre class="r"><code>pub &lt;- ex_paper %&gt;%
-  html_node(&quot;.pub_jnl&quot;) %&gt;%
-  html_text()
+pub_string</code></pre>
+<pre><code>##  [1] &quot;Now&quot;                        &quot;published&quot;                 
+##  [3] &quot;in&quot;                         &quot;American&quot;                  
+##  [5] &quot;Journal&quot;                    &quot;of&quot;                        
+##  [7] &quot;Human&quot;                      &quot;Genetics&quot;                  
+##  [9] &quot;doi:&quot;                       &quot;10.1016/j.ajhg.2015.09.001&quot;</code></pre>
+<pre class="r"><code>if(&quot;preprint&quot; %in% pub_string){
+  pub_doi &lt;- &quot;NA&quot;
+} else {
+  pub_doi &lt;- tail(unlist(strsplit(pub_string, &quot; &quot;)),1)
+}
 
-pub</code></pre>
-<pre><code>## [1] NA</code></pre>
-<p>However, it seems that that the page element “.pub_jnl” does not have any text in the HTML document I am scraping. I tried to search the underlying documentation to no avail. What seemed on its face to be an easy problem, turns out to be more complicated. I will attempt to understand and tackle this problem in my next post.</p>
+pub_doi</code></pre>
+<pre><code>## [1] &quot;10.1016/j.ajhg.2015.09.001&quot;</code></pre>
 </div>
 
                         </div>
