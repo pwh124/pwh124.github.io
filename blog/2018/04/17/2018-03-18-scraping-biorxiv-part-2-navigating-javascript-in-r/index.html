@@ -212,7 +212,7 @@
 </center>
 <hr />
 <p><a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I had written about before</a> that if a paper posted on bioRxiv goes on to be published in a peer-reviewed journal, that information (journal name, DOI number) appears on the paper’s bioRxiv page (seen above). However, when I went to scrape that information, it appears as “blank.” Other information can be successfully scraped, so what is the deal with the data about publication?</p>
-<p>This question tested my very limited knownledge about websites and the HTML behind them. Luckily, I found <a href="https://www.makeuseof.com/tag/what-is-javascript/" target='_blank'>this great article</a> from <a href="https://www.makeuseof.com/" class="uri">https://www.makeuseof.com/</a>.</p>
+<p>This question tested my very limited knowledge about websites and the HTML behind them. Luckily, I found <a href="https://www.makeuseof.com/tag/what-is-javascript/" target='_blank'>this great article</a> from <a href="https://www.makeuseof.com/" class="uri">https://www.makeuseof.com/</a>.</p>
 <p>Briefly, internet browsers use Javascript to load elements of webpages but only after the HTML has been parsed. The R package I was using (rvest) seems to only read/scrape the base HTML code of a website and anything that is dynamically loaded by Javascript in a browser cannot be accessed.</p>
 </div>
 <div id="using-rselenium-with-rvest-to-scrape-biorxiv" class="section level3">
