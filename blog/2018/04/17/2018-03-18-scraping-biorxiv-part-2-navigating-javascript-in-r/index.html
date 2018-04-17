@@ -198,7 +198,7 @@
 </div>
 <div id="where-i-left-off" class="section level3">
 <h3>Where I left off</h3>
-<p><a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>In my ongoing series of blog posts</a> attempting to track the publishing of papers on bioRxiv,<a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I left off</a> with being able to scrape bioRxiv pages in R but failing to be able to extract the information about the published peer-reviewed version of the paper.</p>
+<p><a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>In my ongoing series of blog posts</a> attempting to track the publishing of papers on bioRxiv, <a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I left off</a> with being able to scrape bioRxiv pages in R but failing to be able to extract the information about the published peer-reviewed version of the paper.</p>
 </div>
 <div id="why-cant-i-scrape-the-publishing-information" class="section level3">
 <h3>Why can’t I scrape the publishing information?</h3>
@@ -220,7 +220,7 @@
 <p>Fortunately, there are ways to mimic a webpage being loaded in a browser.</p>
 <p>I found that one of the ways to scrape Javascript loaded elements from websites in R is by using a combination of rvest and something called <a hef="http://phantomjs.org/" target="_blank">PhantomJS</a>. Shout out to <a href="https://www.r-bloggers.com/web-scraping-javascript-rendered-sites/" target="_blank">Florian Teschner at R-bloggers</a> and <a href="https://gist.github.com/hrbrmstr/dc62bb2b35617e9badc5" target="_blank">Github user hrbrmstr</a> for the help.</p>
 <p><a hef="http://phantomjs.org/" target="_blank">PhantomJS</a> is what is called a “headless” browser which means that it has no traditional graphical user interface (GUI) and is mostly controlled through the command-line (Source: <a href="https://en.wikipedia.org/wiki/Headless_browser" target="_blank">Wikipedia</a>). Headless browsers are often used for scraping so PhantomJS sounded perfect for what I needed.</p>
-<p>Unfortunately, the initial ways using PhantomJS and rvest in R (links above), used a program/script that was somewhat external to R. Since I am stubborn, I wanted to use PhantomJS in the R environment. As with most things you want in R, there’s a package for that, <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-basics.html" target="_blank"> RSelenium</a>.</p>
+<p>Unfortunately, the initial ways suggested for using PhantomJS and rvest in R (links above), used a program/script that was somewhat external to R. Since I am stubborn, I wanted to use PhantomJS in the R environment. As with most things you want in R, there’s a package for that, <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-basics.html" target="_blank"> RSelenium</a>.</p>
 <p>One can use RSelenium to headlessly browse a webpage using PhantomJS (vingnette <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html" target="_blank">here</a>).</p>
 <p>In order to use this method, PhantomJS needed to be installed in my path. This can be done easily with the package manager <a href="https://brew.sh/" target="_blank">Homebrew</a> and the following command:</p>
 <blockquote>
@@ -281,7 +281,7 @@ pub_string</code></pre>
 pub_doi</code></pre>
 <pre><code>## [1] &quot;10.1038/nmeth.4604&quot;</code></pre>
 <p>As opposed to my previous blog post, by scraping the webpage with Javascript elements loaded, the publication data can be accurately extracted!</p>
-<p>With this ability, any preprint on bioRxiv can now be linked to the DOI for the peer-reviewed version of the paper. With the DOI in hand, all the information about this paper can now be parsed and linked to the preprint as well.</p>
+<p>With this ability, any preprint on bioRxiv can be linked to the DOI for the peer-reviewed version of the paper. With the DOI in hand, all the information about this paper can now be parsed and linked to the preprint as well.</p>
 <p>Automating this approach and pulling out all the information that would informatively link a preprint to the peer-reviewed version of a paper will be the subject of my next blog posts.</p>
 </div>
 
