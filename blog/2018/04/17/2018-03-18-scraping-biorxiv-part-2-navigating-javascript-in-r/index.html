@@ -227,22 +227,16 @@
 <p>Pauls-MacBook-Pro-2:~ paulhook$ brew install phantomjs</p>
 </blockquote>
 <p>Now, I can start to headlessly browse.</p>
-<pre class="r"><code>library(RSelenium)</code></pre>
-<pre><code>## Warning: package &#39;RSelenium&#39; was built under R version 3.3.2</code></pre>
-<pre class="r"><code>library(rvest)</code></pre>
+<pre class="r"><code>library(RSelenium)
+library(rvest)</code></pre>
 <pre><code>## Loading required package: xml2</code></pre>
-<pre><code>## Warning: package &#39;xml2&#39; was built under R version 3.3.2</code></pre>
 <pre class="r"><code>library(magrittr) # This package will help with some text manipulation I&#39;ll do in a second</code></pre>
 <p>The RSeleniium <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html" target="_blank">documentation</a> was very helpful when trying to do this and my strategy is taken from there.</p>
 <pre class="r"><code># https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html
 
 # Connecting with the Selenium server
-pJS &lt;- phantom() # start the phantom webdriver</code></pre>
-<pre><code>## Warning: The phantom function in RSelenium 
-## is now deprecated and will be defunct in future releases. 
-## Users can drive PhantomJS via selenium using the RSelenium::rsDriver 
-## function or directly using wdman::phantomjs</code></pre>
-<pre class="r"><code>Sys.sleep(10) # the system needs to pause while the phantom binary loads
+pJS &lt;- phantom() # start the phantom webdriver
+Sys.sleep(10) # the system needs to pause while the phantom binary loads
 remDr &lt;- remoteDriver(browserName = &#39;phantomjs&#39;) # communicate with the Selenium server
 remDr$open(silent = T) # open the connection
 
@@ -252,7 +246,7 @@ remDr$navigate(&#39;https://www.biorxiv.org/content/early/2015/03/04/015859&#39;
 # Grab the title of the webpage
 remDr$getTitle()[[1]]</code></pre>
 <pre><code>## [1] &quot;Modeling Linkage Disequilibrium Increases Accuracy of Polygenic Risk Scores | bioRxiv&quot;</code></pre>
-<p>I have successfuly navigated to the bioRxiv page I wanted and found the title. Now I would like to get the entire page and read the HTML so I can scrape other components as well. That can be done using the “remoteDriver$getPageSource()” and “read_html()” commands.</p>
+<p>I have successfuly navigated to the bioRxiv page and I can see that the page has the correct title. Now I would like to get the entire page and read the HTML so I can scrape any component I want from the page. That can be done using the “remoteDriver$getPageSource()” and “read_html()” commands.</p>
 <pre class="r"><code># Grab the documents underlying the website
 hlink &lt;- remDr$getPageSource()[[1]] %&gt;%
   read_html()</code></pre>
@@ -289,6 +283,8 @@ pub_string</code></pre>
 
 pub_doi</code></pre>
 <pre><code>## [1] &quot;10.1016/j.ajhg.2015.09.001&quot;</code></pre>
+<p>By scraping the website after Javascript elements have been loaded, the bioRxiv page has now been successfully scraped for the publication information. With this ability, any preprint on bioRxiv can now be linked to the DOI for the peer-reviewed version of the paper. With the DOI in hand, all the information about this paper can now be parsed and linked to the preprint as well.</p>
+<p>Automating this approach and pulling out all the information that would link a preprint to the peer-reviewed version of a paper will be the subject of my next blog posts.</p>
 </div>
 
                         </div>
