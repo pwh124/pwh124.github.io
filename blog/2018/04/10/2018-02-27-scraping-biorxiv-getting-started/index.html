@@ -239,10 +239,10 @@ library(dplyr)</code></pre>
 <pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
 head(ex_paper)</code></pre>
 <pre><code>## $node
-## &lt;pointer: 0x7fb92403a650&gt;
+## &lt;pointer: 0x7fb251664840&gt;
 ## 
 ## $doc
-## &lt;pointer: 0x7fb9240092e0&gt;</code></pre>
+## &lt;pointer: 0x7fb2516720c0&gt;</code></pre>
 <pre class="r"><code>ex_paper</code></pre>
 <pre><code>## {xml_document}
 ## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
@@ -285,7 +285,7 @@ biorxiv_doi &lt;- ex_paper %&gt;%
 biorxiv_doi</code></pre>
 <pre><code>## [1] &quot;https://doi.org/10.1101/254334&quot;</code></pre>
 <pre class="r"><code>date</code></pre>
-<pre><code>## [1] &quot;2018-02-12&quot;</code></pre>
+<pre><code>## Date of length 0</code></pre>
 </div>
 <div id="tracking-whether-or-not-the-preprint-has-been-published" class="section level3">
 <h3>Tracking whether or not the preprint has been published</h3>
