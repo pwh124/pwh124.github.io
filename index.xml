@@ -99,9 +99,7 @@ Please feel free to contact us, our customer service center is working for you 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>##My name is Paul Hook.
-###I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine.
-I am in Dr. Andy McCallion’s lab and I am currently working on trying to elucidate the genetics that underlie Parkinson disease and other complex neurological disorders. I am especially interested in non-coding DNA and gene regulation. I have recently realized I enjoy sifting through big datasets and spending hours trying to make the perfect figures in R.</description>
+      <description>My name is Paul Hook. I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion’s lab and I am currently working on trying to elucidate the genetics that underlie Parkinson disease and other complex neurological disorders. I am especially interested in non-coding DNA and gene regulation. I have recently realized I enjoy sifting through big datasets and spending hours trying to make the perfect figures in R.</description>
     </item>
     
     <item>
@@ -123,12 +121,9 @@ I am in Dr. Andy McCallion’s lab and I am currently working on trying to eluc
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/papers/</guid>
-      <description>#Grad school
-###bioRxiv
-Hook, P.W., McCallion, A.S. (2019). Leveraging mouse chromatin data for heritability enrichment informs common disease architecture and reveals cortical layer contributions to schizophrenia. bioRxiv. doi: https://doi.org/10.1101/427484
+      <description>Grad school bioRxiv Hook, P.W., McCallion, A.S. (2019). Leveraging mouse chromatin data for heritability enrichment informs common disease architecture and reveals cortical layer contributions to schizophrenia. bioRxiv. doi: https://doi.org/10.1101/427484
  Github: https://github.com/pwh124/open_chromatin
- Data: &amp;lt;a href=“https://doi.org/10.5281/zenodo.3253181” “target=”_blank&amp;quot;&amp;gt;  ###2018
-McClymont, S.A, Hook, P.W., Soto, A.I., Reed, X., Law, W.D., Kerans, S.J., Waite, E.L., Briceno, N.J., Thole, J.F., Heckman, M.G., Diehl, N.N., Wszolek, Z.K., Moore, C.D., Zhu, H., Akiyama, J.A., Dickel, D.</description>
+ Data:    2018 McClymont, S.A, Hook, P.W., Soto, A.I., Reed, X., Law, W.D., Kerans, S.J., Waite, E.L., Briceno, N.J., Thole, J.F., Heckman, M.G., Diehl, N.N., Wszolek, Z.K., Moore, C.D., Zhu, H., Akiyama, J.A., Dickel, D.E., Visel, A.</description>
     </item>
     
     <item>
@@ -138,7 +133,7 @@ McClymont, S.A, Hook, P.W., Soto, A.I., Reed, X., Law, W.D., Kerans, S.J., Waite
       
       <guid>/project/</guid>
       <description>Analysis of public mouse ATAC-seq data Github: https://github.com/pwh124/open_chromatin
-Data: &amp;lt;a href=“https://doi.org/10.5281/zenodo.3253181” “target=”_blank&amp;quot;&amp;gt;
+Data: 
 This Github repo and Zenodo data repo are associated with Hook and McCallion, 2019
  Single-cell RNA-seq of dopaminergic neurons Github: https://github.com/pwh124/sc-da-parkinsons
 This Gitub repo contains code for analyses and figures associated with Hook, et al., 2018
