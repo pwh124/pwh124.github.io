@@ -198,11 +198,16 @@
                         <p class="text-muted text-uppercase mb-small text-right" style="margin-right:20px;">By <a href="#">Paul Hook</a> | April 17, 2018</p>
 
                         <div id="post-content">
-                          <p>###tl;dr
-The area on a bioRxiv page that displays where the paper was published is populated using Javascript when the page is loaded. The R package RSelenium allows for the scraping of that dynamically loaded information, including the published paper’s DOI.</p>
-<p>###Where I left off
-<a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>In my ongoing series of blog posts</a> attempting to track the publishing of papers on bioRxiv, <a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I left off</a> with being able to scrape bioRxiv pages in R but failing to be able to extract the information about the published peer-reviewed version of the paper.</p>
-<p>###Why can’t I scrape the publishing information?</p>
+                          <div id="tldr" class="section level3">
+<h3>tl;dr</h3>
+<p>The area on a bioRxiv page that displays where the paper was published is populated using Javascript when the page is loaded. The R package RSelenium allows for the scraping of that dynamically loaded information, including the published paper’s DOI.</p>
+</div>
+<div id="where-i-left-off" class="section level3">
+<h3>Where I left off</h3>
+<p><a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>In my ongoing series of blog posts</a> attempting to track the publishing of papers on bioRxiv, <a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I left off</a> with being able to scrape bioRxiv pages in R but failing to be able to extract the information about the published peer-reviewed version of the paper.</p>
+</div>
+<div id="why-cant-i-scrape-the-publishing-information" class="section level3">
+<h3>Why can’t I scrape the publishing information?</h3>
 <hr />
 <center>
 <img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
@@ -215,7 +220,9 @@ The area on a bioRxiv page that displays where the paper was published is popula
 <p><a href='blog/2018-02-27-scraping-biorxiv-getting-started/' target='_blank'>I had written about before</a> that if a paper posted on bioRxiv goes on to be published in a peer-reviewed journal, that information (journal name, DOI number) appears on the paper’s bioRxiv page (seen above). However, when I went to scrape that information, it appears as “blank.” Other information can be successfully scraped, so what is the deal with the data about publication?</p>
 <p>This question tested my very limited knowledge about websites and the HTML behind them. Luckily, I found <a href="https://www.makeuseof.com/tag/what-is-javascript/" target='_blank'>this great article</a> from <a href="https://www.makeuseof.com/" class="uri">https://www.makeuseof.com/</a>.</p>
 <p>Briefly, internet browsers use Javascript to load elements of webpages but only after the HTML has been parsed. The R package I was using (rvest) seems to only read/scrape the base HTML code of a website and anything that is dynamically loaded by Javascript in a browser cannot be accessed.</p>
-<p>###Using RSelenium with rvest to scrape bioRxiv</p>
+</div>
+<div id="using-rselenium-with-rvest-to-scrape-biorxiv" class="section level3">
+<h3>Using RSelenium with rvest to scrape bioRxiv</h3>
 <p>Fortunately, there are ways to mimic a webpage being loaded in a browser.</p>
 <p>I found that one of the ways to scrape Javascript loaded elements from websites in R is by using a combination of rvest and something called <a hef="http://phantomjs.org/" target="_blank">PhantomJS</a>. Shout out to <a href="https://www.r-bloggers.com/web-scraping-javascript-rendered-sites/" target="_blank">Florian Teschner at R-bloggers</a> and <a href="https://gist.github.com/hrbrmstr/dc62bb2b35617e9badc5" target="_blank">Github user hrbrmstr</a> for the help.</p>
 <p><a hef="http://phantomjs.org/" target="_blank">PhantomJS</a> is what is called a “headless” browser which means that it has no traditional graphical user interface (GUI) and is mostly controlled through the command-line (Source: <a href="https://en.wikipedia.org/wiki/Headless_browser" target="_blank">Wikipedia</a>). Headless browsers are often used for scraping so PhantomJS sounded perfect for what I needed.</p>
@@ -282,6 +289,7 @@ pub_doi</code></pre>
 <p>As opposed to my previous blog post, by scraping the webpage with Javascript elements loaded, the publication data can be accurately extracted!</p>
 <p>With this ability, any preprint on bioRxiv can be linked to the DOI for the peer-reviewed version of the paper. With the DOI in hand, all the information about this paper can now be parsed and linked to the preprint as well.</p>
 <p>Automating this approach and pulling out all the information that would informatively link a preprint to the peer-reviewed version of a paper will be the subject of my next blog posts.</p>
+</div>
 
                         </div>
                         
