@@ -137,12 +137,10 @@ McClymont, S.A, Hook, P.W., Soto, A.I., Reed, X., Law, W.D., Kerans, S.J., Waite
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/project/</guid>
-      <description>##Analysis of public mouse ATAC-seq data
-Github: https://github.com/pwh124/open_chromatin
+      <description>Analysis of public mouse ATAC-seq data Github: https://github.com/pwh124/open_chromatin
 Data: &amp;lt;a href=“https://doi.org/10.5281/zenodo.3253181” “target=”_blank&amp;quot;&amp;gt;
 This Github repo and Zenodo data repo are associated with Hook and McCallion, 2019
-##Single-cell RNA-seq of dopaminergic neurons
-Github: https://github.com/pwh124/sc-da-parkinsons
+ Single-cell RNA-seq of dopaminergic neurons Github: https://github.com/pwh124/sc-da-parkinsons
 This Gitub repo contains code for analyses and figures associated with Hook, et al., 2018
 Website: https://pwh124.github.io/sc-da-parkinsons/
 I created this website from the Github repo above using the workflowr package. I wanted to create this website so that my data would be more accessible and reproducible.</description>
