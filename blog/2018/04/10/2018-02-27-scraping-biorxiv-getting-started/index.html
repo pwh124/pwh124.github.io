@@ -239,15 +239,15 @@ library(dplyr)</code></pre>
 <pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
 head(ex_paper)</code></pre>
 <pre><code>## $node
-## &lt;pointer: 0x7fd835934280&gt;
+## &lt;pointer: 0x7ff7f9da97d0&gt;
 ## 
 ## $doc
-## &lt;pointer: 0x7fd835933d00&gt;</code></pre>
+## &lt;pointer: 0x7ff7f9da91e0&gt;</code></pre>
 <pre class="r"><code>ex_paper</code></pre>
 <pre><code>## {html_document}
 ## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# article: http://ogp.me/ns/articl ...
-## [2] &lt;body class=&quot;html not-front not-logged-in page-node page-node- page- ...</code></pre>
+## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# article: http://ogp.me/ns/article# bo ...
+## [2] &lt;body class=&quot;html not-front not-logged-in page-node page-node- page-node- ...</code></pre>
 <p>With rvest, I can then extract the page element I am interested in (the title) using the page element (“#page-title”) I found using SelectorGadget. The rvest function “html_node()” uses the name of the page element to extract that chunk of HTML. I can then use the “html_text()” function to pull out the text in that chunk.</p>
 <pre class="r"><code>title &lt;- ex_paper %&gt;%
   html_node(&quot;#page-title&quot;) %&gt;%
