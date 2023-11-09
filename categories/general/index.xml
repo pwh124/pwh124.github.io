@@ -1,26 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>General on Paul Hook</title>
+    <title>general on Paul Hook</title>
     <link>/categories/general/</link>
-    <description>Recent content in General on Paul Hook</description>
+    <description>Recent content in general on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Apr 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/general/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="/categories/general/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My first blog post!</title>
       <link>/blog/2018/04/02/2018-02-20-my-first-blog-post/</link>
       <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>/blog/2018/04/02/2018-02-20-my-first-blog-post/</guid>
-      <description>Hello! If you haven’t been able to tell by the website already, my name is Paul Hook.
-I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion’s lab.
-You can learn a little more about me here, so I won’t go on and on in the inaugural blog post.</description>
+      <description>Hello! If you haven&amp;rsquo;t been able to tell by the website already, my name is Paul Hook.
+I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion&amp;rsquo;s lab.
+You can learn a little more about me here, so I won&amp;rsquo;t go on and on in the inaugural blog post.</description>
     </item>
-    
   </channel>
 </rss>

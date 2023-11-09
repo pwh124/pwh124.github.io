@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Paul Hook</title>
@@ -6,55 +6,42 @@
     <description>Recent content in Categories on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 10 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Biorxiv</title>
+      <title>biorxiv</title>
       <link>/categories/biorxiv/</link>
-      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
-      
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
       <guid>/categories/biorxiv/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>General</title>
-      <link>/categories/general/</link>
-      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/general/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>R</title>
       <link>/categories/r/</link>
-      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
-      
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
       <guid>/categories/r/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Scrape</title>
+      <title>scrape</title>
       <link>/categories/scrape/</link>
-      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
-      
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
       <guid>/categories/scrape/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Scraping</title>
+      <title>scraping</title>
       <link>/categories/scraping/</link>
       <pubDate>Wed, 04 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>/categories/scraping/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>general</title>
+      <link>/categories/general/</link>
+      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>/categories/general/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

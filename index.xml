@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Paul Hook</title>
@@ -6,127 +6,84 @@
     <description>Recent content on Paul Hook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Scraping bioRxiv - Part 2: Navigating Javascript in R</title>
-      <link>/blog/2018/04/17/2018-03-18-scraping-biorxiv-part-2-navigating-javascript-in-r/</link>
-      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2018/04/17/2018-03-18-scraping-biorxiv-part-2-navigating-javascript-in-r/</guid>
-      <description>tl;dr The area on a bioRxiv page that displays where the paper was published is populated using Javascript when the page is loaded. The R package RSelenium allows for the scraping of that dynamically loaded information, including the published paper’s DOI.
- Where I left off In my ongoing series of blog posts attempting to track the publishing of papers on bioRxiv, I left off with being able to scrape bioRxiv pages in R but failing to be able to extract the information about the published peer-reviewed version of the paper.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 10 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scraping bioRxiv</title>
       <link>/blog/2018/04/10/2018-02-27-scraping-biorxiv-getting-started/</link>
       <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>/blog/2018/04/10/2018-02-27-scraping-biorxiv-getting-started/</guid>
       <description>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found here.
-Scraping in R When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (Hypertext Markup Language) documents that make up websites.
-HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-reviewed journal is displayed clearly on each preprint’s page (see below on the webpage in red).</description>
+Scraping in R When I began to approach preprint tracking, the mysterious world of &amp;ldquo;HTML scraping&amp;rdquo; seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (Hypertext Markup Language) documents that make up websites.
+HTML scraping seemed like a good idea for preprint tracking because: A) It doesn&amp;rsquo;t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-reviewed journal is displayed clearly on each preprint&amp;rsquo;s page (see below on the webpage in red).</description>
     </item>
-    
     <item>
       <title>Keeping track of preprints</title>
       <link>/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1/</link>
       <pubDate>Wed, 04 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>/blog/2018/04/04/2018-02-25-scraping-biorxiv-part-1/</guid>
-      <description>Premise For my first set of blog posts, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by Shannon Ellis in her wonderful blog post “Let there be preprint citations!” (emphasis is mine):
- Problem #2: Preprints often become peer-reviewed research. How will we keep track?
+      <description>Premise For my first set of blog posts, I have decided to start a series about preprints. Awhile ago, an interesting question was brought up by Shannon Ellis in her wonderful blog post &amp;ldquo;Let there be preprint citations!&amp;quot; (emphasis is mine):
+Problem #2: Preprints often become peer-reviewed research. How will we keep track?
 Solution #2a (if this occurs during while the manuscript is being drafted): It is up to the author(s) to ensure that their manuscript is as up to date as possible upon submission for publication.</description>
     </item>
-    
     <item>
       <title>My first blog post!</title>
       <link>/blog/2018/04/02/2018-02-20-my-first-blog-post/</link>
       <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>/blog/2018/04/02/2018-02-20-my-first-blog-post/</guid>
-      <description>Hello! If you haven’t been able to tell by the website already, my name is Paul Hook.
-I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion’s lab.
-You can learn a little more about me here, so I won’t go on and on in the inaugural blog post.</description>
+      <description>Hello! If you haven&amp;rsquo;t been able to tell by the website already, my name is Paul Hook.
+I am a fourth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion&amp;rsquo;s lab.
+You can learn a little more about me here, so I won&amp;rsquo;t go on and on in the inaugural blog post.</description>
     </item>
-    
-    <item>
-      <title>CV</title>
-      <link>/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/cv/</guid>
-      <description>  </description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/contact/</guid>
-      <description>We are here to help you Are you curious about something? Do you have some kind of problem with our products? As am hastily invited settled at limited civilly fortune me. Really spring in extent an by. Judge but built gay party world. Of so am he remember although required. Bachelor unpacked be advanced at. Confined in declared marianne is vicinity.
-Please feel free to contact us, our customer service center is working for you 24&amp;frasl;7.</description>
-    </item>
-    
-    <item>
-      <title>FAQ</title>
-      <link>/faq/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/faq/</guid>
-      <description>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-1. WHAT TO DO IF I HAVE STILL NOT RECEIVED THE ORDER? Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</description>
-    </item>
-    
     <item>
       <title>about</title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/about/</guid>
-      <description>My name is Paul Hook. I am a fifth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion’s lab and I am currently working on trying to elucidate the genetics that underlie Parkinson disease and other complex neurological disorders. I am especially interested in non-coding DNA and gene regulation. I have recently realized I enjoy sifting through big datasets and spending hours trying to make the perfect figures in R.</description>
+      <description>My name is Paul Hook. I am a fifth year Ph.D. student in the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I am in Dr. Andy McCallion&amp;rsquo;s lab and I am currently working on trying to elucidate the genetics that underlie Parkinson disease and other complex neurological disorders. I am especially interested in non-coding DNA and gene regulation. I have recently realized I enjoy sifting through big datasets and spending hours trying to make the perfect figures in R.</description>
     </item>
-    
     <item>
       <title>contact</title>
       <link>/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/contact/</guid>
-      <description> Email me: phook2 [at] jhmi.edu   I’m on Twitter: @pwhook   Find my code and analyses on Github   Check me out on Google Scholar    </description>
+      <description> Email me: phook2 [at] jhmi.edu I&amp;rsquo;m on Twitter: @pwhook Find my code and analyses on Github Check me out on Google Scholar Lets do cool stuff </description>
     </item>
-    
+    <item>
+      <title>CV</title>
+      <link>/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/cv/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>FAQ</title>
+      <link>/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/faq/</guid>
+      <description>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+1. WHAT TO DO IF I HAVE STILL NOT RECEIVED THE ORDER? Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</description>
+    </item>
     <item>
       <title>papers</title>
       <link>/papers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/papers/</guid>
-      <description>Grad school 2020 Hook, P.W., &amp;amp; McCallion, A.S. (2020). Leveraging mouse chromatin data for heritability enrichment informs common disease architecture and reveals cortical layer contributions to schizophrenia.Genome Research. Advanced online publication. https://doi.org/10.1101/gr.256578.119
- Github: https://github.com/pwh124/open_chromatin
- Data:   Previous preprint versions can be found on bioRxiv. doi: https://doi.org/10.1101/427484
- 2018 McClymont, S.A., Hook, P.W., Soto, A.I., Reed, X., Law, W.D., Kerans, S.J., Waite, E.L., Briceno, N.J., Thole, J.F., Heckman, M.</description>
+      <description>Grad school 2020 Hook, P.W., &amp;amp; McCallion, A.S. (2020). Leveraging mouse chromatin data for heritability enrichment informs common disease architecture and reveals cortical layer contributions to schizophrenia.Genome Research. Advanced online publication. &amp;lt;a href=&amp;ldquo;https://doi.org/10.1101/gr.256578.119 &amp;ldquo;target=&amp;quot;_blank&amp;rdquo;&amp;gt;https://doi.org/10.1101/gr.256578.119
+Github: https://github.com/pwh124/open_chromatin Data: Previous preprint versions can be found on bioRxiv. doi: &amp;lt;a href=&amp;ldquo;https://doi.org/10.1101/427484 &amp;ldquo;target=&amp;quot;_blank&amp;rdquo;&amp;gt;https://doi.org/10.1101/427484
+2018 McClymont, S.A., Hook, P.W., Soto, A.I., Reed, X., Law, W.D., Kerans, S.J., Waite, E.L., Briceno, N.J., Thole, J.F., Heckman, M.G., Diehl, N.</description>
     </item>
-    
     <item>
       <title>projects</title>
       <link>/project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/project/</guid>
       <description>Analysis of public mouse ATAC-seq data Github: https://github.com/pwh124/open_chromatin
-Data: 
-This Github repo and Zenodo data repo are associated with Hook and McCallion, 2020
- Single-cell RNA-seq of dopaminergic neurons Github: https://github.com/pwh124/sc-da-parkinsons
+Data: This Github repo and Zenodo data repo are associated with &amp;lt;a href=&amp;ldquo;https://doi.org/10.1101/gr.256578.119 &amp;ldquo;target=&amp;quot;_blank&amp;rdquo;&amp;gt;Hook and McCallion, 2020
+Single-cell RNA-seq of dopaminergic neurons Github: https://github.com/pwh124/sc-da-parkinsons
 This Gitub repo contains code for analyses and figures associated with Hook, et al., 2018
 Website: https://pwh124.github.io/sc-da-parkinsons/
 I created this website from the Github repo above using the workflowr package. I wanted to create this website so that my data would be more accessible and reproducible.</description>
     </item>
-    
   </channel>
 </rss>

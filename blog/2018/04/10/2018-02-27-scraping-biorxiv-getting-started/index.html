@@ -17,7 +17,7 @@
   <meta name="description" content="Site template made by devcows using hugo">	
   
 
-  <meta name="generator" content="Hugo 0.36" />
+  <meta name="generator" content="Hugo 0.120.4">
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -199,114 +199,100 @@
 
                         <div id="post-content">
                           <p>This post is the first of a series focusing on tracking preprints on bioRxiv. The motivation behind this and a more detailed explanantion can be found <a href='/blog/2018/02/25/2018-02-25-scraping-biorxiv-part-1/' target='_blank'>here</a>.</p>
-<div id="scraping-in-r" class="section level3">
-<h3>Scraping in R</h3>
-<p>When I began to approach preprint tracking, the mysterious world of “HTML scraping” seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (<em>H</em>ypertext <em>M</em>arkup <em>L</em>anguage) documents that make up websites.</p>
-<p>HTML scraping seemed like a good idea for preprint tracking because: A) It doesn’t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-reviewed journal is displayed clearly on each preprint’s page (see below on the webpage in red).</p>
-<hr />
+<h3 id="scraping-in-r">Scraping in R</h3>
+<p>When I began to approach preprint tracking, the mysterious world of &ldquo;HTML scraping&rdquo; seemed like something that would help. Simply, scraping allows you to extract information from the underlying HTML (<em>H</em>ypertext <em>M</em>arkup <em>L</em>anguage) documents that make up websites.</p>
+<p>HTML scraping seemed like a good idea for preprint tracking because: A) It doesn&rsquo;t seem like there are simple/easy ways to access a bioRxiv database that holds such information (especially for someone with limited experience in this like me) and B) Whether or not the paper is published in a peer-reviewed journal is displayed clearly on each preprint&rsquo;s page (see below on the webpage in red).</p>
+<hr>
 <center>
-<img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;"><br />
+<img src="/img/biorxiv_published_ex.png" alt="bioRxiv" style="width:800px;">  
 </br>
-<figcaption>
-<em>An example bioRxiv page. Peer-reviewed publication is listed in red under the author list.</em>
-</figcaption>
+<figcaption> *An example bioRxiv page. Peer-reviewed publication is listed in red under the author list.* </figcaption>
 </center>
-<hr />
+***
 <p>As I have most of my coding experience in R, I immediately started to try to find a way to scrape websites in R. Luckily, the great <a href="http://hadley.nz/" target="_blank">Hadley Wickham</a> designed the perfect package for this, <a href="https://github.com/hadley/rvest" target="_blank">rvest</a>. Starting here I began to explore rvest as well as other tools that would help me scrape in R.</p>
-</div>
-<div id="finding-a-biorxiv-paper-title-with-selectorgadget" class="section level3">
-<h3>Finding a bioRxiv paper title with SelectorGadget</h3>
+<h3 id="finding-a-biorxiv-paper-title-with-selectorgadget">Finding a bioRxiv paper title with SelectorGadget</h3>
 <p>As Hadley Wickham suggests in the <a href="https://github.com/hadley/rvest" target="_blank">rvest documentation</a>, I started making myself familiar with the <a href="http://selectorgadget.com/" target="_blank">SelectorGadget tool</a>. This tool allows you to click on various parts of a webpage and find what they are coded as in the underlying HTML of the website.</p>
-<p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let’s start by clicking on the title of the paper with SelectorGadget.</p>
-<hr />
+<p>Going back to the <a href="https://www.biorxiv.org/content/early/2018/02/12/254334" target="_blank">bioRxiv paper</a> above, let&rsquo;s start by clicking on the title of the paper with SelectorGadget.</p>
+<hr>
 <center>
-<img src="/img/selectorGadget-ex-mod.png" alt="bioRxiv-mod" style="width:800px;"><br />
+<img src="/img/selectorGadget-ex-mod.png" alt="bioRxiv-mod" style="width:800px;">  
 </br>
-<figcaption>
-<em>SelectorGadget shows me where I can find the title</em>
-</figcaption>
+<figcaption> *SelectorGadget shows me where I can find the title* </figcaption>
 </center>
-<hr />
-<p>As you can see, when I click on the title, SelectorGadget tells me I can find the title of the paper in the “#page-title” page element.</p>
-</div>
-<div id="finding-a-biorxiv-paper-title-with-rvest" class="section level3">
-<h3>Finding a bioRxiv paper title with rvest</h3>
+***
+<p>As you can see, when I click on the title, SelectorGadget tells me I can find the title of the paper in the &ldquo;#page-title&rdquo; page element.</p>
+<h3 id="finding-a-biorxiv-paper-title-with-rvest">Finding a bioRxiv paper title with rvest</h3>
 <p>Now that I know the HTML element to scrape, I can try to scrape it using rvest.</p>
 <p>First I need to load the rvest and dplyr packages.</p>
-<pre class="r"><code>library(rvest)
-library(dplyr)</code></pre>
-<p>Now I can use the rvest package. The first basic function I used is the “read_html()” function that will take a URL and make an “xml_document” object in R that holds pointers to the website document. You can also view the top of the of xml document in R.</p>
-<pre class="r"><code>ex_paper &lt;- read_html(&quot;https://www.biorxiv.org/content/early/2018/02/12/254334&quot;)
-head(ex_paper)</code></pre>
-<pre><code>## $node
-## &lt;pointer: 0x7f8977861ab0&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(rvest)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(dplyr)
+</span></span></code></pre></div><p>Now I can use the rvest package. The first basic function I used is the &ldquo;read_html()&rdquo; function that will take a URL and make an &ldquo;xml_document&rdquo; object in R that holds pointers to the website document. You can also view the top of the of xml document in R.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>ex_paper <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_html</span>(<span style="color:#e6db74">&#34;https://www.biorxiv.org/content/early/2018/02/12/254334&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">head</span>(ex_paper)
+</span></span></code></pre></div><pre tabindex="0"><code>## $node
+## &lt;pointer: 0x560b82711ce0&gt;
 ## 
 ## $doc
-## &lt;pointer: 0x7f8977860080&gt;</code></pre>
-<pre class="r"><code>ex_paper</code></pre>
-<pre><code>## {html_document}
-## &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:mml=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# article: http://ogp.me/ns/article# bo ...
-## [2] &lt;body class=&quot;html not-front not-logged-in page-node page-node- page-node- ...</code></pre>
-<p>With rvest, I can then extract the page element I am interested in (the title) using the page element (“#page-title”) I found using SelectorGadget. The rvest function “html_node()” uses the name of the page element to extract that chunk of HTML. I can then use the “html_text()” function to pull out the text in that chunk.</p>
-<pre class="r"><code>title &lt;- ex_paper %&gt;%
-  html_node(&quot;#page-title&quot;) %&gt;%
-  html_text()
-
-title</code></pre>
-<pre><code>## [1] &quot;On the design of CRISPR-based single cell molecular screens&quot;</code></pre>
-<p>The title (“On the design of CRISPR-based single cell molecular screens”) was successfully scraped from the page!</p>
-</div>
-<div id="scraping-other-useful-information" class="section level3">
-<h3>Scraping other useful information</h3>
+## &lt;pointer: 0x560b82711340&gt;
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>ex_paper
+</span></span></code></pre></div><pre tabindex="0"><code>## {html_document}
+## &lt;html lang=&#34;en&#34; dir=&#34;ltr&#34; xmlns=&#34;http://www.w3.org/1999/xhtml&#34; xmlns:mml=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;
+## [1] &lt;head prefix=&#34;og: http://ogp.me/ns# article: http://ogp.me/ns/article# bo ...
+## [2] &lt;body class=&#34;html not-front not-logged-in page-node page-node- page-node- ...
+</code></pre><p>With rvest, I can then extract the page element I am interested in (the title) using the page element (&quot;#page-title&quot;) I found using SelectorGadget. The rvest function &ldquo;html_node()&rdquo; uses the name of the page element to extract that chunk of HTML. I can then use the &ldquo;html_text()&rdquo; function to pull out the text in that chunk.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>title <span style="color:#f92672">&lt;-</span> ex_paper <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html_node</span>(<span style="color:#e6db74">&#34;#page-title&#34;</span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html_text</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>title
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] &#34;On the design of CRISPR-based single cell molecular screens&#34;
+</code></pre><p>The title (&ldquo;On the design of CRISPR-based single cell molecular screens&rdquo;) was successfully scraped from the page!</p>
+<h3 id="scraping-other-useful-information">Scraping other useful information</h3>
 <p>I could use this same strategy to extract other things from the page including the date it was published on bioRxiv and the DOI (with the help of the <a href="https://github.com/tidyverse/stringr" target="_blank">stringr</a> and <a href="http://magrittr.tidyverse.org/index.html" target="_blank">magritter</a> packages).</p>
-<pre class="r"><code>library(stringr)
-library(magrittr)
-
-# I know this is messy but...
-date &lt;- ex_paper %&gt;%
-  html_nodes(&quot;.published&quot;) %&gt;%
-  html_text() %&gt;%
-  strsplit(split = &quot; &quot;) %&gt;%
-  unlist() %&gt;%
-  extract(c(2,3,4))
-biorxiv_date &lt;- paste(date[1], date[2], date[3], sep = &quot; &quot;)
-  tmp &lt;- gsub(&quot;.&quot;, &quot;&quot;, biorxiv_date, fixed = TRUE)
-  tmp2 &lt;- gsub(&quot;,&quot;,&quot;&quot;,tmp,fixed = T)
-  date &lt;- as.Date(tmp2, &quot;%b %d %Y&quot;)
-
-biorxiv_doi &lt;- ex_paper %&gt;%
-    html_node(&quot;.highwire-cite-metadata-doi&quot;) %&gt;%
-    html_text() %&gt;%
-    strsplit(split = &quot; &quot;) %&gt;%
-    unlist() %&gt;% 
-    extract(2)
-
-biorxiv_doi</code></pre>
-<pre><code>## [1] &quot;https://doi.org/10.1101/254334&quot;</code></pre>
-<pre class="r"><code>date</code></pre>
-<pre><code>## Date of length 0</code></pre>
-</div>
-<div id="tracking-whether-or-not-the-preprint-has-been-published" class="section level3">
-<h3>Tracking whether or not the preprint has been published</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(stringr)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(magrittr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># I know this is messy but...</span>
+</span></span><span style="display:flex;"><span>date <span style="color:#f92672">&lt;-</span> ex_paper <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html_nodes</span>(<span style="color:#e6db74">&#34;.published&#34;</span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html_text</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">strsplit</span>(split <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">unlist</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">extract</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>biorxiv_date <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste</span>(date[1], date[2], date[3], sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span>)
+</span></span><span style="display:flex;"><span>  tmp <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">gsub</span>(<span style="color:#e6db74">&#34;.&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, biorxiv_date, fixed <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span><span style="display:flex;"><span>  tmp2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">gsub</span>(<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>,tmp,fixed <span style="color:#f92672">=</span> T)
+</span></span><span style="display:flex;"><span>  date <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.Date</span>(tmp2, <span style="color:#e6db74">&#34;%b %d %Y&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>biorxiv_doi <span style="color:#f92672">&lt;-</span> ex_paper <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">html_node</span>(<span style="color:#e6db74">&#34;.highwire-cite-metadata-doi&#34;</span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">html_text</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strsplit</span>(split <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unlist</span>() <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extract</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>biorxiv_doi
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] &#34;https://doi.org/10.1101/254334&#34;
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>date
+</span></span></code></pre></div><pre tabindex="0"><code>## Date of length 0
+</code></pre><h3 id="tracking-whether-or-not-the-preprint-has-been-published">Tracking whether or not the preprint has been published</h3>
 <p>Now that I have scraped a bioRxiv paper page, finding out whether or not the bioRxiv paper has been published in a peer-reviewed journal should be easy since it is displayed clearly on the page (see images above).</p>
-<p>So I used SelectorGadget and found that the peer-reviewed journal should be found using the “.pub_jnl” page element.</p>
-<pre class="r"><code>pub &lt;- ex_paper %&gt;%
-  html_node(&quot;.pub_jnl&quot;) %&gt;%
-  html_text()
-
-pub</code></pre>
-<pre><code>## [1] NA</code></pre>
-<p>However, it seems that that the page element “.pub_jnl” does not have any text in the HTML document I am scraping. I tried to search the underlying documentation to no avail. What seemed on its face to be an easy problem, turns out to be more complicated. I will attempt to understand and tackle this problem in my next post.</p>
-</div>
+<p>So I used SelectorGadget and found that the peer-reviewed journal should be found using the &ldquo;.pub_jnl&rdquo; page element.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>pub <span style="color:#f92672">&lt;-</span> ex_paper <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html_node</span>(<span style="color:#e6db74">&#34;.pub_jnl&#34;</span>) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html_text</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pub
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] NA
+</code></pre><p>However, it seems that that the page element &ldquo;.pub_jnl&rdquo; does not have any text in the HTML document I am scraping. I tried to search the underlying documentation to no avail. What seemed on its face to be an easy problem, turns out to be more complicated. I will attempt to understand and tackle this problem in my next post.</p>
 
                         </div>
                         
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script>
-    var disqus_config = function () {
+<script type="application/javascript">
+    window.disqus_config = function () {
     
     
     
@@ -374,16 +360,16 @@ pub</code></pre>
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="/categories/biorxiv">biorxiv (3)</a>
+            <li><a href="/categories/biorxiv">biorxiv (2)</a>
             </li>
             
             <li><a href="/categories/general">general (1)</a>
             </li>
             
-            <li><a href="/categories/r">r (3)</a>
+            <li><a href="/categories/r">r (2)</a>
             </li>
             
-            <li><a href="/categories/scrape">scrape (2)</a>
+            <li><a href="/categories/scrape">scrape (1)</a>
             </li>
             
             <li><a href="/categories/scraping">scraping (1)</a>
@@ -463,16 +449,18 @@ pub</code></pre>
     
 
     
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-112321839-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112321839-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
