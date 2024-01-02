@@ -43,6 +43,16 @@ You can learn a little more about me here, so I won&amp;rsquo;t go on and on in 
       <description>Hello! My name is Paul Hook. I am a Postdoctoral Fellow in Dr. Winston Timp&amp;rsquo;s lab in the Department of Biomedical Engineering at Johns Hopkins University. I received my PhD from the Human Genetics program in the McKusick-Nathans Institute of Genetic Medicine at the Johns Hopkins University School of Medicine. I did my thesis work in Dr. Andy McCallion&amp;rsquo;s lab. There I focused on trying to elucidate the genetics that underlie Parkinson disease and schizophrenia.</description>
     </item>
     <item>
+      <title>analyses/data</title>
+      <link>/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/project/</guid>
+      <description>T2T chrY GitHub: https://github.com/arangrhie/T2T-HG002Y
+This GitHub repo contains all the code from Rhie, 2023.
+I contributed to this work through the analysis of a variety of epigenetics datasets including CpG 5-methylcytosine measured with whole genome bisulfite sequencing (WGBS), enzymatic methyl-seq (EM-seq), PacBio, and ONT, as well as nanoNOMe GpC 5-methylcytosine data. Documentation for the analysis of this data can be found within the main GitHub repo here.
+T2T epigenetics GitHub: https://github.</description>
+    </item>
+    <item>
       <title>contact</title>
       <link>/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -71,16 +81,6 @@ You can learn a little more about me here, so I won&amp;rsquo;t go on and on in 
       <guid>/papers/</guid>
       <description>Postdoc 2023 Volkel, K.D, Lin, K.N., Hook, P.W., Timp, W., Keung, A.J., and Tuck, J.M (2023). FrameD: framework for DNA-based data storage design, verification, and validation. Bioinformatics, Volume 39, Issue 10, October 2023, btad572. https://doi.org/10.1093/bioinformatics/btad572
 Rhie, A., Nurk, S., Cechova, M., Hoyt, S.J., Taylor, D.J., Altemose, N., Hook, P.W., Koren, S., Rautiainen, M., Alexandrov, I.A., …, Eichler, E.E, O&amp;rsquo;Neill, R., Schatz, M.C., Miga, K.H., Makova, K.D., and Phillippy, A.M. (2023).</description>
-    </item>
-    <item>
-      <title>projects</title>
-      <link>/project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/project/</guid>
-      <description>T2T chrY GitHub: https://github.com/arangrhie/T2T-HG002Y
-This GitHub repo contains all the code from Rhie, 2023.
-I contributed to this work through the analysis of a variety of epigenetics datasets including CpG 5-methylcytosine measured with whole genome bisulfite sequencing (WGBS), enzymatic methyl-seq (EM-seq), PacBio, and ONT, as well as nanoNOMe GpC 5-methylcytosine data. Documentation for the analysis of this data can be found within the main GitHub repo here.
-T2T epigenetics GitHub: https://github.</description>
     </item>
   </channel>
 </rss>

@@ -49,6 +49,8 @@
   </url><url>
     <loc>/about/</loc>
   </url><url>
+    <loc>/project/</loc>
+  </url><url>
     <loc>/contact/</loc>
   </url><url>
     <loc>/cv/</loc>
@@ -56,7 +58,5 @@
     <loc>/faq/</loc>
   </url><url>
     <loc>/papers/</loc>
-  </url><url>
-    <loc>/project/</loc>
   </url>
 </urlset>
